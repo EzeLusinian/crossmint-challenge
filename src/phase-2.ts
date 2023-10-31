@@ -19,11 +19,11 @@ const mainPhase2 = async () => {
         for (let j = 0; j < megaverseMap[i].length; j++) {
 
             const value = megaverseMap[i][j];
-            
+
             if (value !== 'SPACE') {
-                
+
                 const { endpoint, ...extra } = dictionary[value]
-                
+
                 await callApi(
                     'POST',
                     endpoint,
@@ -42,3 +42,27 @@ const mainPhase2 = async () => {
 }
 
 mainPhase2()
+
+// ------- EXTRA: ------- 
+
+// Another way that I think could also be to use a forEach to go through all the arrays, and another forEach to go through each array.
+
+/*
+megaverseMap.forEach((list, indexRow) => {
+    list.forEach((element, indexCol) => {
+        if (element !== "SPACE") {
+            const { endpoint, ...extra } = dictionary[element]
+            await callApi(
+                'POST',
+                endpoint,
+                {
+                    row: indexRow,
+                    column: indexCol,
+                    candidateId,
+                    ...extra,
+                }
+            )
+        }
+    });
+});
+*/
